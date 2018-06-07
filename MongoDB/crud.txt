@@ -1,0 +1,43 @@
+// Create database
+use RemoteApplication
+
+// Create collections
+db.createCollection("Institute")
+db.createCollection("Sensor")
+db.createCollection("Actuator")
+db.createCollection("Board")
+db.createCollection("Component")
+db.createCollection("Experiment")
+db.createCollection("Feature")
+db.createCollection("People")
+db.createCollection("Request")
+
+// Insert documents
+
+db.Institute.insert({
+  name: 'Instituto Federal de ciência, tecnologia e inovação de Santa Catarina',
+  initials: 'IFSC',
+  address: 'R. José Lino Kretzer, 608',
+  city : 'São José',
+  state : 'Santa Catarina',
+  CEP : '88103-310',
+});
+
+db.Sensor.insert({
+  name: 'Sensor de Umidade do Solo Higrômetro',
+  type: 'Digital e Analógica',
+  Value: 22,
+  Voltage: '3,3-5v',
+  TradeMark: 'FilipeFlop',
+  Model: 'REF: 9SS19',
+});
+
+db.Actuator.insert({
+  name: 'Chave Táctil Push-Button',
+  type: 'Digital',
+  Value: 1,
+  maxim_Voltage: '250V',
+  maxim_Current: '50mA',
+  TradeMark: 'FilipeFlop',
+  Model: 'REF: BCE04',
+});

@@ -18,3 +18,4 @@ Using the softwares of the session *Build with* on Windows, made the following s
 ## Built With
 
 * [Mongodb Compass](https://www.mongodb.com/download-center#compass) - As the GUI for MongoDB, MongoDB Compass allows you to make smarter decisions about document structure, querying, indexing, document validation, and more. Compass is available as part of our subscriptions.
+* [Mongo Document](https://docs.mongodb.com/) - Help document.
