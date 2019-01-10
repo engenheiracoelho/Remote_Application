@@ -1,21 +1,24 @@
-#EC2 - WebAPP - Step-by-Step
+# EC2 - WebAPP - Step-by-Step
 
 Amazon Elastic Compute Cloud (EC2) it's a AWS service used for create and execute virtual machines on cloud.
 
-** If you need Launch a new EC2 instance and configure, see [EC2 File](https://bitbucket.org/strobelamp/sl/src/master/Concepts/AWS/EC2.md) . **
+**If you need Launch a new EC2 instance and configure, see [EC2 File](https://bitbucket.org/strobelamp/sl/src/master/Concepts/AWS/EC2.md) .**
 
 1. Configure **Security Group**
 
-* ICMP | Custom ICMP IPV4 | All | All | Custom |  0.0.0.0/0 | ::/0 | 
-* ICMP | Custom ICMP IPV6 | All | All | Custom |  0.0.0.0/0 | ::/0 | 
-* ICMP | All ICMP - IPV4 | ICMP | All | Custom |  0.0.0.0/0 | ::/0 | 
-* ICMP | All ICMP - IPV6 | ICMP | All | Custom |  0.0.0.0/0 | ::/0 | 
+ICMP | Custom ICMP IPV4 | All | All | Custom |  0.0.0.0/0 | ::/0 | 
 
-* HTTP | TCP | 80 | All | Custom |  0.0.0.0/0 | ::/0 | 
+ICMP | Custom ICMP IPV6 | All | All | Custom |  0.0.0.0/0 | ::/0 | 
 
-* SSH | TCP | 80 | All | Custom |  0.0.0.0/0 | ::/0 | 
+ICMP | All ICMP - IPV4 | ICMP | All | Custom |  0.0.0.0/0 | ::/0 | 
 
-* VPC | All | 0-65535 | Custom | sg-a50d2cc9 |
+ICMP | All ICMP - IPV6 | ICMP | All | Custom |  0.0.0.0/0 | ::/0 | 
+
+HTTP | TCP | 80 | All | Custom |  0.0.0.0/0 | ::/0 | 
+
+SSH | TCP | 80 | All | Custom |  0.0.0.0/0 | ::/0 | 
+
+VPC | All | 0-65535 | Custom | sg-a50d2cc9 |
 
 
 2. Access your instance using SSH. (Inside the folder with MYKEY.pem file)
@@ -56,13 +59,13 @@ Amazon Elastic Compute Cloud (EC2) it's a AWS service used for create and execut
 
 6. Create your project and a virtual enviroment:
 
-        ```
+	```
 	mkdir myproject
     	cd myproject/
 	virtualenv venv
 	source ./venv/bin/activate
-        ```
-
+	```
+	
 7. Install the packages to your project:
 
 	```
@@ -85,10 +88,12 @@ Amazon Elastic Compute Cloud (EC2) it's a AWS service used for create and execut
 9. Execute your application using the port **www.myapplication.com:8080** to verify if is ok. TIPS:
 
 	```
-	execute and **ctrl+z**, use the command **bg** to running.
-	**jobs** to see all programs running.
-	**fg number** to open a program in jobs.
-	**ctrl+c** to finish the program.
+	execute
+	ctrl+z : stop the program.
+	bg: running in background.
+	jobs: all programs running.
+	fg number: open a program in jobs.
+	ctrl+c: finish the program.
 	```
 
 10. Create a WSGI entrypoint, **~/myproject/wsgi.py**:
@@ -124,9 +129,12 @@ Amazon Elastic Compute Cloud (EC2) it's a AWS service used for create and execut
 	}
 	```
 
-13. Start nginx service with **service nginx start** command.
+13. Start nginx service:
+	```
+	service nginx start
+	```
 
-14. Change default port (**/etc/nginx/sites-enabled/default**) for anyone that you aren't using. 
+14. Change default port **/etc/nginx/sites-enabled/default** for anyone that you aren't using. 
 
 	```
 	server {
@@ -135,9 +143,17 @@ Amazon Elastic Compute Cloud (EC2) it's a AWS service used for create and execut
 	...
 	}
 	```
-15. Restart nginx service with **service nginx restart** command.
+	
+15. Restart nginx service:
+	```
+	service nginx restart
+	```
 
-16. Start your gunicorn application with **gunicorn --workers 3 --bind unix:myproject.sock -m 000 wsgi**.
+16. Start your gunicorn application with:
+
+	```
+	gunicorn --workers 3 --bind unix:myproject.sock -m 000 wsgi
+	```
 
 ## Reference
 
