@@ -149,7 +149,7 @@ VPC | All | 0-65535 | Custom | sg-a50d2cc9 |
 	service nginx restart
 	```
 
-16. Start your gunicorn application with:
+16. Start your gunicorn application with - **Inside the project folder** : 
 
 	```
 	gunicorn --workers 3 --bind unix:myproject.sock -m 000 wsgi
